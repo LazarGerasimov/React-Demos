@@ -1,4 +1,5 @@
 import './App.css';
+import Link from './components/Link';
 import Logo from './components/Logo';
 import Paragraph from './components/Paragraph';
 
@@ -8,14 +9,7 @@ function App() {
       <header className="App-header">
         <Logo />
         <Paragraph />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link />
       </header>
     </div>
   );
