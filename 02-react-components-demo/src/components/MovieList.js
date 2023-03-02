@@ -11,8 +11,10 @@ const MovieList = (props) => {
     ]
 
     return (
-            <div className="movieList">
-                <Movie
+        <div className="movieList">
+
+            <h1>Movies List</h1>
+            <Movie
                 title={movies[0].title}
                 year={movies[0].year}
                 cast={movies[0].cast}
@@ -29,7 +31,7 @@ const MovieList = (props) => {
                 year={movies[2].year}
                 cast={movies[2].cast}
             />
-            </div>
+        </div>
     )
 }
 
