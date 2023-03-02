@@ -10,6 +10,7 @@ function App() {
         title="Man of Steel" 
         year="2015"
         cast={['Henry Cavill', 'Diane Lane', 'Russell Crowe']}
+        isNew={false}
       />
     </div>
   )
