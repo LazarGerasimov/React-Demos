@@ -6,7 +6,11 @@ function App() {
   return (
     <div className="App">
       <h1>Movie List</h1>
-      <Movie title="Man of Steel" />
+      <Movie 
+        title="Man of Steel" 
+        year="2015"
+        cast={5 + 4}
+      />
     </div>
   )
 }
