@@ -9,7 +9,7 @@ function App() {
       <Movie 
         title="Man of Steel" 
         year="2015"
-        cast={5 + 4}
+        cast={['Henry Cavill', 'Diane Lane', 'Russell Crowe']}
       />
     </div>
   )
