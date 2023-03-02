@@ -15,6 +15,9 @@ const Heading = (props) => {
 const headerElement = ( 
     <header>
         <Heading name="One" />
+        <Heading name="Three" />
+        <Heading name="Four" />
+        <Heading name="Five" />
         <h2>Heading Two</h2>    
     </header>
 );

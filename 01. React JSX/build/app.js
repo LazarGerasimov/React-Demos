@@ -20,6 +20,9 @@ var headerElement = React.createElement(
     "header",
     null,
     React.createElement(Heading, { name: "One" }),
+    React.createElement(Heading, { name: "Three" }),
+    React.createElement(Heading, { name: "Four" }),
+    React.createElement(Heading, { name: "Five" }),
     React.createElement(
         "h2",
         null,
