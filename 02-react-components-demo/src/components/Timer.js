@@ -1,9 +1,11 @@
 import React, { useDebugValue } from 'react';
+// import { useState } from 'react';
 
 
 const Timer = (props) => {
 
-    const [seconds, setSeconds] = React.useState(0);
+    const [seconds, setSeconds] = React.useState(props.start);
+    // const [seconds, setSeconds] = useState(props.start);  -- if just useState is imported
 
     // useState returns an array with two elements - value and function (can have custom names)
     // useState needs an initial value
@@ -11,7 +13,8 @@ const Timer = (props) => {
     // stateResult[1] -> function
 
     setTimeout(() => {
-        setSeconds(seconds + 1)
+        // setSeconds(seconds + 1)
+        setSeconds(state => state + 1)
     }, 1000)
 
     return (
