@@ -36,7 +36,7 @@ const Counter = (props) => {
     return (
         <div>
 
-            <h3>{title}: {counter}</h3>
+            <h3>{counter > 3 ? 'Last Counter' : getTitle(counter)}: {counter}</h3>
             <button onClick={incrementCounterHandler}>+</button>
             <button onClick={decrementCounterHandler}>-</button>
             <button onClick={clearCounterHandler}>Clear</button>
