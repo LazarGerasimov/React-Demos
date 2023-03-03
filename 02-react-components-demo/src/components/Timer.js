@@ -23,6 +23,7 @@ const Timer = (props) => {
 
     return (
         <div>
+            <h2>Timer</h2>
             Time: {seconds}s
         </div>
     )
