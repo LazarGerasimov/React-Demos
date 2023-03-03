@@ -14,7 +14,11 @@ const Timer = (props) => {
 
     setTimeout(() => {
         // setSeconds(seconds + 1)
-        setSeconds(state => state + 1)
+        if (seconds >= 6) {
+            setSeconds(0);
+        } else {
+            setSeconds(state => state + 1)
+        }
     }, 1000)
 
     return (
