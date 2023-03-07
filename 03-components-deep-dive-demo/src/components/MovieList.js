@@ -9,7 +9,8 @@ export function MovieList({movies}) {
 
     const movieElements = [];
     for (const movie of movies) {
-        movieElements.push(createElement(Movie, movie))
+        // movieElements.push(createElement(Movie, movie))
+        movieElements.push(<Movie {...movie}/>)
     }
 
     // return [
