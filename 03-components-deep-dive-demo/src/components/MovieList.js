@@ -4,9 +4,9 @@ import { Movie } from "./Movie";
 
 export function MovieList({movies}) { 
 
-    const firstMovie = movies[0];
+    // const firstMovie = movies[0];
 
-    return (
+    return [
         // <Movie 
         // title={firstMovie.title}
         // year={firstMovie.year}
@@ -14,7 +14,8 @@ export function MovieList({movies}) {
         // posterUrl={firstMovie.posterUrl}
         // director={firstMovie.director}
         // />
-
-        <Movie {...firstMovie} />
-    )
+        <Movie {...movies[0]} />,
+        <Movie {...movies[1]} />,
+        <Movie {...movies[2]} />
+    ]
 }
