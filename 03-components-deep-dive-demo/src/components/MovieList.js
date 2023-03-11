@@ -31,7 +31,11 @@ export function MovieList({movies}) {
 
     return (
         <ul>
-            {movies.map(movie => <li><Movie {...movie}/></li>)}
+          {movies.map(movie => (
+            <li key={movie.id}>
+                <Movie {...movie} />
+            </li>
+          ))}
         </ul>
     );
 }
