@@ -3,7 +3,7 @@ import {createElement} from 'react';
 
 
 
-export function MovieList({movies, onMovieDelete}) { 
+export function MovieList({movies, onMovieDelete, onMovieSelect}) { 
 
     // const firstMovie = movies[0];
 
@@ -33,7 +33,10 @@ export function MovieList({movies, onMovieDelete}) {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-                <Movie {...movie} onMovieDelete={onMovieDelete} />
+                <Movie 
+                {...movie} 
+                onMovieDelete={onMovieDelete} 
+                onMovieSelect={onMovieSelect} />
             </li>
           ))}
         </ul>

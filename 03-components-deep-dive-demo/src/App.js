@@ -11,11 +11,19 @@ function App() {
     setMovies(oldMovies => oldMovies.filter(x => x.id !== id));
   }
 
+  const onMovieSelect = (id) => {
+    setMovies(allMovies => allMovies.map(m => ({...m, selected: m.id === id})));
+  }
+
 
   return (
     <div className="App">
       <h1>Movie Collection</h1>
-      <MovieList movies={movies} onMovieDelete={onMovieDelete}/>
+      <MovieList 
+      movies={movies} 
+      onMovieDelete={onMovieDelete}
+      onMovieSelect={onMovieSelect}
+      />
     </div>
   );
 }
