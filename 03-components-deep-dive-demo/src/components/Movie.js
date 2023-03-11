@@ -1,7 +1,7 @@
 
 
 
-export function Movie({title, year, plot, posterUrl, director}) {
+export function Movie({ id, title, year, plot, posterUrl, director, onMovieDelete }) {
 
 
     return (
@@ -11,7 +11,10 @@ export function Movie({title, year, plot, posterUrl, director}) {
                 <img src={posterUrl} alt={title} />
                 <p>{plot}</p>
             </main>
-            <footer>Director: {director}</footer>
+            <footer>
+                <p>Director: {director}</p>
+                <button onClick={() => onMovieDelete(id)}>Delete</button>
+            </footer>
         </article>
     )
 }

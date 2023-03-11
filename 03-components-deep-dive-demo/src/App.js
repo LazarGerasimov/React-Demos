@@ -1,15 +1,21 @@
+import { useState } from 'react';
 import { MovieList } from './components/MovieList';
-import {movies} from './movies'
+import { movies as movieData } from './movies'
 
 
 function App() {
 
+  const [movies, setMovies] = useState(movieData);
+
+  const onMovieDelete = (id) => {
+    setMovies(oldMovies => oldMovies.filter(x => x.id !== id));
+  }
 
 
   return (
     <div className="App">
       <h1>Movie Collection</h1>
-      <MovieList movies={movies.slice(0, 10)}/>
+      <MovieList movies={movies} onMovieDelete={onMovieDelete}/>
     </div>
   );
 }
