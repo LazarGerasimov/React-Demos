@@ -7,11 +7,13 @@ export function MovieList({movies}) {
 
     // const firstMovie = movies[0];
 
-    const movieElements = [];
-    for (const movie of movies) {
-        // movieElements.push(createElement(Movie, movie))
-        movieElements.push(<li><Movie {...movie}/></li>);
-    }
+    // const movieElements = [];
+    // for (const movie of movies) {
+    //     // movieElements.push(createElement(Movie, movie))
+    //     movieElements.push(<li><Movie {...movie}/></li>);
+    // }
+
+    // let movieList = movies.map(movie => <li><Movie {...movie}/></li>);
 
     // return [
     //     // <Movie 
@@ -29,7 +31,7 @@ export function MovieList({movies}) {
 
     return (
         <ul>
-            {movieElements}
+            {movies.map(movie => <li><Movie {...movie}/></li>)}
         </ul>
     );
 }
