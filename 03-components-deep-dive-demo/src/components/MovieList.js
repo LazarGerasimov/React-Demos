@@ -10,7 +10,7 @@ export function MovieList({movies}) {
     const movieElements = [];
     for (const movie of movies) {
         // movieElements.push(createElement(Movie, movie))
-        movieElements.push(<Movie {...movie}/>)
+        movieElements.push(<li><Movie {...movie}/></li>);
     }
 
     // return [
@@ -27,5 +27,9 @@ export function MovieList({movies}) {
     //     // <Movie {...movies[2]} />
     // ]
 
-    return movieElements;
+    return (
+        <ul>
+            {movieElements}
+        </ul>
+    );
 }
