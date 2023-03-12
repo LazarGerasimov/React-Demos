@@ -16,17 +16,17 @@ export function Movie({
 
     useEffect(() => {
         console.log(`Movie ${title} - mounted`);
-    }, []);     // empty array prevents from re-mounting
+    }, [title]);     // empty array prevents from re-mounting
 
     useEffect(() => {
         console.log(`Movie ${title} - updated`);
-    }, [selected]);
+    }, [selected, title]);
 
     useEffect(() => {
         return () => {
             console.log(`Movie ${title} - unmounted`);
         }
-    }, [])
+    }, [title])
 
     return (
         <article className={styles['movie-article']}>
