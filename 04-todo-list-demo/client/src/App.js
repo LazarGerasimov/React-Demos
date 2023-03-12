@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -7,21 +7,26 @@ import { TodoList } from "./components/TodoList";
 
 function App() {
 
-    const [todos, setTodos] = useState([]); 
+    const [todos, setTodos] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/todos`)
             .then(res => res.json())
             .then(data => {
-                setTodos(Object.values(data));
-                console.log(todos);
+                const result = Object.keys(data).map(id => ({ id, ...data[id] }));
+                setTodos(result);
+                // console.log(todos);
             });
-    }, [])
+    }, []); // fetch initial data from json file
+
+    const toggleTodoStatus = (id) => {
+        setTodos(state => state.map(t => t.id === id ? ({ ...t, isCompleted: !t.isCompleted }) : t));
+    }
 
     return (
         <div className="App">
-           
-           <Header />
+
+            <Header />
 
             {/* <!-- Main content --> */}
             <main className="main">
@@ -38,7 +43,7 @@ function App() {
 
                         {/* <Loading /> */}
 
-                       <TodoList todos={todos} />
+                        <TodoList todos={todos} toggleTodoStatus={toggleTodoStatus} />
                     </div>
                 </section>
             </main>
