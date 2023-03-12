@@ -12,10 +12,10 @@ function App() {
         fetch(`http://localhost:3000/movies2.json`)
             .then(res => res.json())
             .then(moviesData => {
-                console.log(moviesData);
+                console.log(moviesData.movies);
                 setMovies(moviesData.movies);
             })
-    })
+    }, []);
 
     const onMovieDelete = (id) => {
         setMovies(oldMovies => oldMovies.filter(x => x.id !== id));
