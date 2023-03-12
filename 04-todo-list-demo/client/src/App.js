@@ -1,9 +1,22 @@
+import {useEffect} from 'react';
+
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Loading } from "./components/Loading";
 import { Todos } from "./components/Todos";
 
 function App() {
+
+    useEffect(() => {
+        fetch(`http://localhost:3030/jsonstore/todos`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            });
+    }, [])
+
+
+
     return (
         <div className="App">
            
