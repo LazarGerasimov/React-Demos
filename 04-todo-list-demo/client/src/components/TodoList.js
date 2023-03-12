@@ -1,5 +1,4 @@
-
-
+import { Todo } from "./Todo";
 
 
 export function TodoList({
@@ -8,27 +7,19 @@ export function TodoList({
 }) {
 
     return (
-         <table className="table">
-         <thead>
-             <tr>
-                 <th className="table-header-task">Task</th>
-                 <th className="table-header-status">Status</th>
-                 <th className="table-header-action">Action</th>
-             </tr>
-         </thead>
-         <tbody>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th className="table-header-task">Task</th>
+                    <th className="table-header-status">Status</th>
+                    <th className="table-header-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            {todos.map(todo => (
-                <tr key={todo.id} className={`todo ${todo.isCompleted ? 'is-completed' : ''}`.trim()}>
-                <td>{todo.text}</td>
-                <td>{todo.isCompleted ? 'Completed' : 'Not Completed'}</td>
-                <td className="todo-action">
-                    <button className="btn todo-btn" onClick={() => toggleTodoStatus(todo.id)}>Change status</button>
-                </td>
-            </tr>
-            ))}
+                {todos.map(todo => <Todo key={todo.id} {...todo} toggleTodoStatus={toggleTodoStatus} />) }
 
-             {/* <!-- Todo item -->
+                {/* <!-- Todo item -->
              <tr className="todo is-completed">
                  <td>Give dog a bath</td>
                  <td>Complete</td>
@@ -36,8 +27,8 @@ export function TodoList({
                      <button className="btn todo-btn">Change status</button>
                  </td>
              </tr> */}
-            
-         </tbody>
-     </table>
+
+            </tbody>
+        </table>
     )
 }

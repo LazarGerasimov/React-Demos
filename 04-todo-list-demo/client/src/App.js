@@ -23,6 +23,13 @@ function App() {
         setTodos(state => state.map(t => t.id === id ? ({ ...t, isCompleted: !t.isCompleted }) : t));
     }
 
+    const onTodoAdd = () => {
+        const lastId = Number(todos[todos.length - 1].id);
+        const text = prompt('Task name:');
+        const newTask = { id: lastId + 1, text, isCompleted: false };
+        setTodos(state => [newTask, ...state]);
+    }
+
     return (
         <div className="App">
 
@@ -36,7 +43,7 @@ function App() {
                     <h1>Todo List</h1>
 
                     <div className="add-btn-container">
-                        <button className="btn">+ Add new Todo</button>
+                        <button className="btn" onClick={onTodoAdd}>+ Add new Todo</button>
                     </div>
 
                     <div className="table-wrapper">
