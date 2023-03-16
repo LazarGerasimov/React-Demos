@@ -5,13 +5,16 @@ import './App.css';
 import { UserList } from "./components/UserList";
 
 import * as userService from './services/userService';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         userService.getAll()
             .then(users => {
+                setUsers(users);
                 console.log(users);
             })
             .catch(err => {
@@ -25,7 +28,7 @@ function App() {
             <main className="main">
                 <section className="card users-container">
                     <Search />
-                    <UserList />
+                    <UserList users={users}/>
                 </section>
             </main>
             <Footer />

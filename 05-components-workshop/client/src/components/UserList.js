@@ -2,7 +2,9 @@ import { User } from "./User";
 
 
 
-export function UserList() {
+export function UserList({
+    users,
+}) {
     return (
         // < !--Table component-- >
         <div className="table-wrapper">
@@ -133,7 +135,7 @@ export function UserList() {
                 </thead>
                 <tbody>
                     {/* <!-- Table row component --> */}
-                    <User />
+                    {users.map(user => <User key={users._id} {...user} />)}   
                 </tbody>
             </table>
         </div>
