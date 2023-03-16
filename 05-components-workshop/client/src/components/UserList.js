@@ -135,7 +135,7 @@ export function UserList({
                 </thead>
                 <tbody>
                     {/* <!-- Table row component --> */}
-                    {users.map(user => <User key={users._id} {...user} />)}   
+                    {users.map(user => <User key={user._id} {...user} />)}   
                 </tbody>
             </table>
         </div>
