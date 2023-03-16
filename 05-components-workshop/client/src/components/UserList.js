@@ -13,7 +13,7 @@ export function UserList() {
 
                 {/* No users added yet  --> */}
 
-                <div className="table-overlap">
+                {/* <div className="table-overlap">
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -30,7 +30,7 @@ export function UserList() {
                         ></path>
                     </svg>
                     <h2>There is no users yet.</h2>
-                </div>
+                </div> */}
 
                 {/* <!-- No content overlap component  --> */}
 
