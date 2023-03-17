@@ -3,7 +3,7 @@
 const formatDate = (input) => {
     const date = new Date(input);
 
-    return date.toLocaleString();
+    return date.toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
 }
 
 export function User({
