@@ -8,6 +8,7 @@ export const UserDetails = ({
     email,
     imageUrl,
     createdAt,
+    updatedAt,
     phoneNumber,
     address,
 }) => {
@@ -30,7 +31,7 @@ export const UserDetails = ({
                     </header>
                     <div className="content">
                         <div className="image-container">
-                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt=""
+                            <img src={imageUrl} alt={`${firstName} ${lastName}`}
                                 className="image" />
                         </div>
                         <div className="user-details">
@@ -46,8 +47,8 @@ export const UserDetails = ({
                                 <strong>{`${address.country}, ${address.city}, ${address.street}, ${address.streetNumber}`}</strong>
                             </p>
 
-                            <p>Created on: <strong>Wednesday, June 28, 2022</strong></p>
-                            <p>Modified on: <strong>Thursday, June 29, 2022</strong></p>
+                            <p>Created on: <strong>{createdAt}</strong></p>
+                            <p>Modified on: <strong>{updatedAt}</strong></p>
                         </div>
                     </div>
                 </div>
