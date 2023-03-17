@@ -10,7 +10,7 @@ export function UserList({
         <div className="table-wrapper">
             {/* <!-- Overlap components  --> */}
 
-            <div className="loading-shade">
+            {/* <div className="loading-shade"> */}
                 {/* <!-- Loading spinner  --> */}
                 {/* <div className="spinner"></div> */}
 
@@ -76,7 +76,7 @@ export function UserList({
                     </svg>
                     <h2>Failed to fetch</h2>
                 </div> */}
-            </div>
+            {/* </div> */}
 
             <table className="table">
                 <thead>
