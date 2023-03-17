@@ -14,13 +14,17 @@ export function UserList({
         const user = await userService.getOne(userId);
 
         setSelectedUser(user);
+    };
+
+    const onClose = () => {
+        setSelectedUser(null)
     }
 
 
     return (
         // < !--Table component-- >
         <>
-            {selectedUser && <UserDetails {...selectedUser} />}
+            {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 

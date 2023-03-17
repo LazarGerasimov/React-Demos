@@ -9,7 +9,7 @@ export function User({
     createdAt,
     phoneNumber,
     updatedAt,
-    onInfoClick
+    onInfoClick,
 }) {
     return (
         <tr>
