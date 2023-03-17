@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { User } from "./User";
 import { UserDetails } from "./UserDetails";
+import * as userService from '../services/userService';
 
 
 export function UserList({
@@ -9,11 +10,10 @@ export function UserList({
 
     const [selectedUser, setSelectedUser] = useState(null);
 
-    const onInfoClick = (userId) => {
-        const user = users.find(u => u._id === userId);;
-        if (user) {
-            setSelectedUser(user);
-        }
+    const onInfoClick = async (userId) => {
+        const user = await userService.getOne(userId);
+
+        setSelectedUser(user);
     }
 
 
