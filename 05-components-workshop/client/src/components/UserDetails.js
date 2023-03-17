@@ -1,7 +1,15 @@
 
 
 
-export const UserDetails = () => {
+export const UserDetails = ({
+    _id,
+    firstName,
+    lastName,
+    email,
+    imageUrl,
+    createdAt,
+    phoneNumber,
+}) => {
     return (
         // <!-- User details component  -->
         <div className="overlay">
