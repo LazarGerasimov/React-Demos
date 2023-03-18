@@ -9,6 +9,11 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+    const [formValues, setFormValues] = useState({
+        firstName: '',
+        lastName: '',
+
+    })
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -55,7 +60,11 @@ function App() {
         const updatedUser = await userService.update(userId, data);
 
         setUsers(state => state.map(x => x._id === userId ? updatedUser : x));
-    }
+    };
+
+    const formChangeHandler = (e) => {
+        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
+    };
 
     return (
         <>
@@ -68,6 +77,8 @@ function App() {
                         onUserCreateSubmit={onUserCreateSubmit}
                         onUserUpdateSubmit={onUserUpdateSubmit}
                         onUserDelete={onUserDelete}
+                        formValues={formValues}
+                        formChangeHandler={formChangeHandler}
                     />
                 </section>
             </main>

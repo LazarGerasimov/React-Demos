@@ -9,8 +9,11 @@ import { UserDelete } from './UserDelete';
 export function UserList({
     users,
     onUserCreateSubmit,
-    onUserDelete, 
+    onUserDelete,
     onUserUpdateSubmit,
+    formValues,
+    formChangeHandler,
+
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
@@ -27,7 +30,7 @@ export function UserList({
     const onClose = () => {
         setSelectedUser(null);
         setShowAddUser(false);
-        setShowDeleteUser(null); 
+        setShowDeleteUser(null);
         setShowEditUser(null);
     };
 
@@ -66,9 +69,17 @@ export function UserList({
         // < !--Table component-- >
         <>
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
-            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
+            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} formValues={formValues} formChangeHandler={formChangeHandler} />}
             {showDeleteUser && <UserDelete onClose={onClose} onDelete={onDeleteHandler} />}
-            {showEditUser && <UserCreate onClose={onClose} onUserCreateSubmit={onUserUpdateSubmitHandler} user={showEditUser}/>}
+            {showEditUser &&
+                <UserCreate
+                    onClose={onClose}
+                    onUserCreateSubmit={onUserUpdateSubmitHandler}
+                    user={showEditUser}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                />
+            }
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
