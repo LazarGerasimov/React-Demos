@@ -10,6 +10,7 @@ export function UserList({
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showAddUser, setShowAddUser] = useState(false);
 
     const onInfoClick = async (userId) => {
         const user = await userService.getOne(userId);
@@ -18,7 +19,12 @@ export function UserList({
     };
 
     const onClose = () => {
-        setSelectedUser(null)
+        setSelectedUser(null);
+        
+    }
+
+    const onUserAddClick = () => {
+        setShowAddUser(true);
     }
 
 
@@ -26,7 +32,7 @@ export function UserList({
         // < !--Table component-- >
         <>
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
-            <UserCreate />
+            {showAddUser && < UserCreate />}
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
@@ -162,7 +168,7 @@ export function UserList({
                     </tbody>
                 </table>
             </div>
-            <button className="btn-add btn">Add new user</button>
+            <button className="btn-add btn" onClick={onUserAddClick}>Add new user</button>
         </>
 
     )
