@@ -22,13 +22,23 @@ function App() {
             })
     }, []);
 
+    const onUserCreateSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
+        const firstName = formData.get('firstName');
+
+        console.log(firstName);
+    };
+
     return (
         <>
             <Header />
             <main className="main">
                 <section className="card users-container">
                     <Search />
-                    <UserList users={users} />
+                    <UserList users={users} onUserCreateSubmit={onUserCreateSubmit} />
                 </section>
             </main>
             <Footer />

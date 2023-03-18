@@ -7,6 +7,8 @@ import { UserCreate } from './UserCreate';
 
 export function UserList({
     users,
+    onUserCreateSubmit,
+    
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
@@ -20,7 +22,7 @@ export function UserList({
 
     const onClose = () => {
         setSelectedUser(null);
-        
+        setShowAddUser(false);
     }
 
     const onUserAddClick = () => {
@@ -32,7 +34,7 @@ export function UserList({
         // < !--Table component-- >
         <>
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
-            {showAddUser && < UserCreate />}
+            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmit} />}
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
