@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { User } from "./User";
 import { UserDetails } from "./UserDetails";
 import * as userService from '../services/userService';
+import { UserCreate } from './UserCreate';
 
 
 export function UserList({
@@ -25,6 +26,7 @@ export function UserList({
         // < !--Table component-- >
         <>
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
+            <UserCreate />
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
