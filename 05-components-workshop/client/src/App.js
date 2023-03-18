@@ -22,14 +22,18 @@ function App() {
             })
     }, []);
 
-    const onUserCreateSubmit = (e) => {
+    const onUserCreateSubmit = async (e) => {
+        // stop automatic form submit
         e.preventDefault();
-
+        // take values from form
         const formData = new FormData(e.currentTarget);
-
-        const firstName = formData.get('firstName');
-
-        console.log(firstName);
+        const data = Object.fromEntries(formData);
+        // send ajax request to server
+        const result = await userService.create(data);
+        console.log(result);
+        // if successfull add new user to the state
+        
+        //close dialog
     };
 
     return (
