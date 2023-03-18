@@ -20,14 +20,14 @@ export async function getOne(userId) {
 }
 
 export async function create(userData) {
-    const {country, city, street, streetNumber, ...data} = userData;
+    const { country, city, street, streetNumber, ...data } = userData;
     data.address = {
-        country, 
-        city, 
-        street, 
+        country,
+        city,
+        street,
         streetNumber
     }
-    
+
     const response = await fetch(baseURL, {
         method: 'POST',
         headers: {
@@ -39,4 +39,13 @@ export async function create(userData) {
     const result = await response.json();
 
     return result.user;
+};
+
+export async function remove(userId) {
+    const response = await fetch(`${baseURL}/${userId}`, {
+        method: 'DELETE'
+    });
+
+    const result = await response.json();
+    return result;
 }

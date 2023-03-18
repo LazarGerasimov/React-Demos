@@ -23,18 +23,30 @@ function App() {
     }, []);
 
     const onUserCreateSubmit = async (e) => {
+
         // stop automatic form submit
         e.preventDefault();
+
         // take values from form
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData);
+
         // send ajax request to server
         const createdUser = await userService.create(data);
-        
+
         // if successfull add new user to the state
         setUsers(state => [...state, createdUser]);
         //close dialog
     };
+
+    const onUserDelete = async (userId) => {
+        // delete from server
+        await userService.remove(userId);
+        // delete from state
+        setUsers(state => state.filter(x => x._id !== userId));
+    };
+
+    
 
     return (
         <>
@@ -42,7 +54,11 @@ function App() {
             <main className="main">
                 <section className="card users-container">
                     <Search />
-                    <UserList users={users} onUserCreateSubmit={onUserCreateSubmit} />
+                    <UserList
+                        users={users}
+                        onUserCreateSubmit={onUserCreateSubmit}
+                        onUserDelete={onUserDelete}
+                    />
                 </section>
             </main>
             <Footer />
