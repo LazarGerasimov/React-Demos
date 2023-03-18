@@ -15,7 +15,7 @@ function App() {
         userService.getAll()
             .then(users => {
                 setUsers(users);
-                console.log(users);
+                // console.log(users);
             })
             .catch(err => {
                 console.log('Error: ' + err)
@@ -29,10 +29,10 @@ function App() {
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData);
         // send ajax request to server
-        const result = await userService.create(data);
-        console.log(result);
-        // if successfull add new user to the state
+        const createdUser = await userService.create(data);
         
+        // if successfull add new user to the state
+        setUsers(state => [...state, createdUser]);
         //close dialog
     };
 

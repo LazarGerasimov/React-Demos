@@ -8,7 +8,7 @@ import { UserCreate } from './UserCreate';
 export function UserList({
     users,
     onUserCreateSubmit,
-    
+
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
@@ -23,11 +23,13 @@ export function UserList({
     const onClose = () => {
         setSelectedUser(null);
         setShowAddUser(false);
-    }
+    };
 
     const onUserAddClick = () => {
         setShowAddUser(true);
-    }
+    };
+
+    
 
 
     return (
