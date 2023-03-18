@@ -29,14 +29,17 @@ export function UserList({
         setShowAddUser(true);
     };
 
-    
+    const onUserCreateSubmitHandler = (e) => {
+        onUserCreateSubmit(e);
+        setShowAddUser(false);
+    }
 
 
     return (
         // < !--Table component-- >
         <>
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
-            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmit} />}
+            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
