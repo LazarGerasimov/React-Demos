@@ -68,6 +68,10 @@ function App() {
     };
 
     const formChangeHandler = (e) => {
+        setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
+    };
+
+    const validateForm = (e) => {
         const value = e.target.value;
         const errors = {};
 
@@ -80,9 +84,7 @@ function App() {
         };
 
         setFormErrors(errors);
-
-        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
-    };
+    }
 
     return (
         <>
@@ -98,6 +100,7 @@ function App() {
                         formValues={formValues}
                         formChangeHandler={formChangeHandler}
                         formErrors={formErrors}
+                        validateForm={validateForm}
                     />
                 </section>
             </main>

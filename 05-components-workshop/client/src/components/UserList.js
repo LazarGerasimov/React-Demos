@@ -13,7 +13,9 @@ export function UserList({
     onUserUpdateSubmit,
     formValues,
     formChangeHandler,
-    formErrors
+    formErrors,
+    validateForm,
+
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
@@ -68,8 +70,23 @@ export function UserList({
     return (
         // < !--Table component-- >
         <>
-            {selectedUser && <UserDetails {...selectedUser} onClose={onClose} formErrors={formErrors} />}
-            {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} formValues={formValues} formChangeHandler={formChangeHandler} />}
+            {selectedUser &&
+                <UserDetails
+                    {...selectedUser}
+                    onClose={onClose}
+
+                />
+            }
+            {showAddUser &&
+                < UserCreate
+                    onClose={onClose}
+                    onUserCreateSubmit={onUserCreateSubmitHandler}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                    formErrors={formErrors}
+                    validateForm={validateForm}
+                />
+            }
             {showDeleteUser && <UserDelete onClose={onClose} onDelete={onDeleteHandler} />}
             {showEditUser &&
                 <UserCreate
@@ -79,6 +96,7 @@ export function UserList({
                     formValues={formValues}
                     formChangeHandler={formChangeHandler}
                     formErrors={formErrors}
+                    validateForm={validateForm}
                 />
             }
             <div className="table-wrapper">

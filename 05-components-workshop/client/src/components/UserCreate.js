@@ -9,7 +9,8 @@ export function UserCreate({
     formValues,
     formChangeHandler,
     formErrors,
-
+    validateForm,
+    
 }) {
 
 
@@ -43,6 +44,7 @@ export function UserCreate({
                                         type="text"
                                         value={formValues.firstName}
                                         onChange={formChangeHandler}
+                                        onBlur={validateForm}
                                     />
                                 </div>
                                 {formErrors.firstName &&
@@ -56,7 +58,7 @@ export function UserCreate({
                                 <label htmlFor="lastName">Last name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} />
+                                    <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} onBlur={validateForm} />
                                 </div>
                                 {formErrors.lastName &&
                                     <p className="form-error">
