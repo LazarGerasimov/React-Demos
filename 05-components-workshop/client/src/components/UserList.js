@@ -10,10 +10,12 @@ export function UserList({
     users,
     onUserCreateSubmit,
     onUserDelete, 
+    onUserUpdateSubmit,
 }) {
 
     const [selectedUser, setSelectedUser] = useState(null);
     const [showDeleteUser, setShowDeleteUser] = useState(false);
+    const [showEditUser, setShowEditUser] = useState(null);
     const [showAddUser, setShowAddUser] = useState(false);
 
     const onInfoClick = async (userId) => {
@@ -26,6 +28,7 @@ export function UserList({
         setSelectedUser(null);
         setShowAddUser(false);
         setShowDeleteUser(null); 
+        setShowEditUser(null);
     };
 
     const onUserAddClick = () => {
@@ -37,6 +40,12 @@ export function UserList({
         setShowAddUser(false);
     };
 
+    const onUserUpdateSubmitHandler = (e, userId) => {
+        onUserUpdateSubmit(e, userId);
+        // setShowEditUser(null);
+        onClose();
+    }
+
     const onDeleteClick = (userId) => {
         setShowDeleteUser(userId);
     };
@@ -46,6 +55,12 @@ export function UserList({
         onClose();
     };
 
+    const onEditClick = async (userId) => {
+        const user = await userService.getOne(userId);
+
+        setShowEditUser(user);
+    };
+
 
     return (
         // < !--Table component-- >
@@ -53,6 +68,7 @@ export function UserList({
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
             {showAddUser && < UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
             {showDeleteUser && <UserDelete onClose={onClose} onDelete={onDeleteHandler} />}
+            {showEditUser && <UserCreate onClose={onClose} onUserCreateSubmit={onUserUpdateSubmitHandler} user={showEditUser}/>}
             <div className="table-wrapper">
                 {/* <!-- Overlap components  --> */}
 
@@ -187,6 +203,7 @@ export function UserList({
                                 {...user}
                                 onInfoClick={onInfoClick}
                                 onDeleteClick={onDeleteClick}
+                                onEditClick={onEditClick}
                             />)}
                     </tbody>
                 </table>
