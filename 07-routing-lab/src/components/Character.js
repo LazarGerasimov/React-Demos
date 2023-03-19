@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link, Route, Routes } from "react-router-dom";
+import { CharacterFilms } from "./CharacterFilms";
 import styles from './Navigation.module.css';
 
 const baseUrl = 'https://swapi.dev/api';
@@ -34,12 +35,18 @@ export function Character() {
 
             <nav className="navigation">
                 <ul className={styles.navigation}>
-                <li><Link to="films">Films</Link></li>
-                <li><Link to="vehicles">Vehicles</Link></li>
-                <li><Link to="starships">Starships</Link></li>
-                {/* use without '/' to nest the route */}
+                    <li><Link to="films">Films</Link></li>
+                    <li><Link to="vehicles">Vehicles</Link></li>
+                    <li><Link to="starships">Starships</Link></li>
+                    {/* use without '/' to nest the route */}
                 </ul>
             </nav>
+
+            <Routes>
+                <Route path="/films" element={<CharacterFilms />} />
+                <Route path="/vehicles" element={<h5>Vehicles</h5>} />
+                <Route path="/starships" element={<h5>Starships</h5>} />
+            </Routes>
         </>
     )
 }
