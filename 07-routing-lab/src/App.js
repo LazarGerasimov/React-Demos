@@ -1,5 +1,7 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './components/Home';
+import { About } from './components/About';
 
 
 function App() {
@@ -7,8 +9,8 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <Routes>
-                    <Route path='/' element={<h1>Home Page</h1>}/>
-                    <Route path='/about' element={<h2>About Page</h2>}/>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/about' element={<About />} />
                 </Routes>
             </header>
         </div>
