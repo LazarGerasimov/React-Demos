@@ -1,11 +1,13 @@
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Games Play</h1>
-    </div>
-  );
+    return (
+        <div id="box">
+
+
+        </div>
+
+    );
 }
 
 export default App;
