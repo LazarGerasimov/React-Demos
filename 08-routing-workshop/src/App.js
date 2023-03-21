@@ -21,6 +21,10 @@ function App() {
             })
     }, []);
 
+    const onCreateGameSubmit = (data) => {
+        
+    }
+
     return (
         <div id="box">
             <Header />
