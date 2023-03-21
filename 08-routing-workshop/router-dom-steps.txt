@@ -1,0 +1,20 @@
+-- Steps -- 
+
+1. Import {BrowserRouter} from 'react-router-dom' in index.js
+2. Add <BrowserRouter><BrowserRouter/> around the <App /> component
+3. Import {Routes, Route} from 'react-router-dom' in App.js
+4. Example: 
+
+        <div id="box">
+            <Header />
+            <main id="main-content">
+                <Routes>
+                    <Route path='/' element={<Home />}/>
+                </Routes>
+                {/* <Home /> */}
+                {/* <Login /> */}
+                {/* <Register /> */}
+                {/* <CreateGame /> */}
+                <Catalog />
+            </main>
+        </div>
