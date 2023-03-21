@@ -6,7 +6,8 @@ const baseUrl = `http://localhost:3030/jsonstore/games`;
 
 export const getAll = async () => {
 
-    const games = await request('GET', baseUrl);
-    console.log(games);
+    const result = await request('GET', baseUrl);
+    const games = Object.values(result);
+    
     return games;
 }

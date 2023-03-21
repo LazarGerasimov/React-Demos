@@ -1,10 +1,15 @@
 
 
 
-export const request = async (url, method) => {
+export const request = async (method, url) => {
     const response = await fetch(url, {
-        method: method
+        method,
     });
-    const result = await response.json();
-    return result;
+
+    try {
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return {};
+    }
 } 
