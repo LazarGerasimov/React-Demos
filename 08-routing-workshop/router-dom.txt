@@ -1,0 +1,5 @@
+-- Steps -- 
+
+1. Import {BrowserRouter} from 'react-router-dom' in index.js
+2. Add <BrowserRouter><BrowserRouter/> around the <App /> component
+
