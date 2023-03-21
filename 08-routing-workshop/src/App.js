@@ -7,8 +7,16 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 
 import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        
+    }, []);
+
     return (
         <div id="box">
             <Header />
@@ -20,11 +28,6 @@ function App() {
                     <Route path='/create-game' element={<CreateGame />} />
                     <Route path='/catalog' element={<Catalog />} />
                 </Routes>
-                {/* <Home /> */}
-                {/* <Login /> */}
-                {/* <Register /> */}
-                {/* <CreateGame /> */}
-                {/* <Catalog /> */}
             </main>
         </div>
 
