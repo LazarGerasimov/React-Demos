@@ -8,13 +8,17 @@ import { Register } from './components/Register/Register';
 
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import * as gameService from './services/gameService';
 
 function App() {
 
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        
+        gameService.getAll()
+            .then(result => {
+                setGames(result);
+            })
     }, []);
 
     return (
