@@ -29,6 +29,7 @@ function App() {
 
          
         //TODO: add to state
+        setGames(state => [...state, newGame]);
         //TODO: redirect to catalog
         navigate('/catalog');
     };
