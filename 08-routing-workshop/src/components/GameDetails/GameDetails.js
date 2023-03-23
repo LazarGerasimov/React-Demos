@@ -1,10 +1,18 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-
+import * as gameService from '../../services/gameService';
 
 export const GameDetails = () => {
 
     const { gameId } = useParams();       // gets gameId from Routes in App.js
-    console.log(gameId);
+    const [game, setGame] = useState({});
+    
+    useEffect(() => {
+        gameService.getOne(gameId)
+            .then(result => {
+                setGame(result)
+            })
+    }, [gameId])
 
     return (
         <section id="game-details">
