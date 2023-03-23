@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 export const GameDetails = () => {
 
-    const {} = useParams();
+    const { gameId } = useParams();       // gets gameId from Routes in App.js
 
     return (
         <section id="game-details">
