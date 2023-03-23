@@ -21,9 +21,17 @@ function App() {
             })
     }, []);
 
-    const onCreateGameSubmit = (data) => {
+    const onCreateGameSubmit = async (data) => {
         console.log(data);
-    }
+        const newGame = await gameService.create(data);
+
+
+         
+        //TODO: add to state
+        //TODO: redirect to catalog
+    };
+
+
 
     return (
         <div id="box">
