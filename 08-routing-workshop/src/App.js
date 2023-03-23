@@ -9,6 +9,7 @@ import { Register } from './components/Register/Register';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as gameService from './services/gameService';
+import { GameDetails } from './components/GameDetails/GameDetails';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
                     <Route path='/catalog' element={<Catalog games={games} />} />
+                    <Route path='/catalog/:gameId' element={<GameDetails />}/>
                 </Routes>
             </main>
         </div>
