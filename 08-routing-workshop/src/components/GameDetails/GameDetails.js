@@ -6,7 +6,7 @@ export const GameDetails = () => {
 
     const { gameId } = useParams();       // gets gameId from Routes in App.js
     const [game, setGame] = useState({});
-    
+
     useEffect(() => {
         gameService.getOne(gameId)
             .then(result => {
@@ -26,9 +26,7 @@ export const GameDetails = () => {
                     <p className="type">{game.category}</p>
                 </div>
 
-                <p className="text">
-                    {game.summary}
-                </p>
+                <p className="text"> {game.summary} </p>
 
                 {/* <!-- Bonus ( for Guests and Users ) --> */}
                 <div className="details-comments">
