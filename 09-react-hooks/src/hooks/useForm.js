@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 
-const useForm = (initialValues) => {
+export const useForm = (initialValues) => {
     const [formValues, setFormValues] = useState(initialValues);
 
     const onChangeHandler = (e) => {
