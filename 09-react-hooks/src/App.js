@@ -39,13 +39,17 @@ function App() {
 
     const onTodoAddClick = () => {
         setShowAddTodo(true);
-    }
+    };
 
+    const onTodoAddClose = () => {
+        setShowAddTodo(false);
+    }
+ 
     return (
         <>
             <Header />
             <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
-            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} />
+            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
         </>
     );
 }
