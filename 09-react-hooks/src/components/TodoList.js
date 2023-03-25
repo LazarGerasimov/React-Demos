@@ -14,7 +14,7 @@ export const TodoList = ({
             <ListGroup >
                 {todos.map(t => <TodoItem key={t._id} {...t}/>)}
             </ListGroup>
-            <Button variant="primary">Add</Button>{' '}
+            <Button style={{marginTop: '10px'}} variant="primary">Add</Button>{' '}
         </div>
     )
 }
