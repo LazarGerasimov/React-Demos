@@ -12,6 +12,7 @@ const baseUrl = 'http://localhost:3030/jsonstore/todos';
 function App() {
 
     const [todos, setTodos] = useState([]);
+    const [showAddTodo, setShowAddTodo] = useState(false);
 
     useEffect(() => {
         fetch(`${baseUrl}`)
@@ -21,15 +22,30 @@ function App() {
             })
     }, []);
 
-    const onTodoAdd = async (values) => {
-        console.log(values);
+    const onTodoAddSubmit = async (values) => {
+        // console.log(values);
+        const response = await fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(values)
+        });
+
+        const result = await response.json();
+
+        console.log(result);
     };
+
+    const onTodoAddClick = () => {
+        setShowAddTodo(true);
+    }
 
     return (
         <>
             <Header />
-            <TodoList todos={todos} />
-            <AddTodoModal onTodoAdd={onTodoAdd} />
+            <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
+            <AddTodoModal onTodoAddSubmit={onTodoAddSubmit} />
         </>
     );
 }

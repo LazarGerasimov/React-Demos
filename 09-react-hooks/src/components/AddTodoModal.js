@@ -6,15 +6,15 @@ import { useForm } from '../hooks/useForm';
 
 
 export const AddTodoModal = ({
-    onTodoAdd,
+    onTodoAddSubmit,
 
 }) => {
 
     const { formValues, onChangeHandler, onSubmit } = useForm({
         text: ''
-    }, onTodoAdd);
+    }, onTodoAddSubmit);
 
-    
+
     return (
         <Modal show={true}>
             <Modal.Header closeButton>

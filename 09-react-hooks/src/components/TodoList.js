@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export const TodoList = ({
     todos,
+    onTodoAddClick,
 
 }) => {
     return (
@@ -14,7 +15,7 @@ export const TodoList = ({
             <ListGroup >
                 {todos.map(t => <TodoItem key={t._id} {...t}/>)}
             </ListGroup>
-            <Button style={{marginTop: '10px'}} variant="primary">Add</Button>{' '}
+            <Button onClick={onTodoAddClick} style={{marginTop: '10px'}} variant="primary">Add</Button>{' '}
         </div>
     )
 }
