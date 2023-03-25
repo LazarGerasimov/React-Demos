@@ -5,26 +5,29 @@ import Form from 'react-bootstrap/Form';
 
 export const AddTodoModal = () => {
 
-    return (
-        <Form>
-            <Modal show={true}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Todo</Modal.Title>
-                </Modal.Header>
+    const onTodoSubmit = (e) => {
+        e.preventDefault();
+        console.log('submit')
+    }
 
-                <Modal.Body>
+    return (
+        <Modal show={true}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add Todo</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+                <Form onSubmit={onTodoSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Todo</Form.Label>
                         <Form.Control type="text" placeholder="Add Todo here.." />
                     </Form.Group>
 
-                </Modal.Body>
-
-                <Modal.Footer>
                     <Button variant="secondary">Close</Button>
                     <Button variant="primary" type="submit">Submit</Button>
-                </Modal.Footer>
-            </Modal>
-        </Form>
+
+                </Form>
+            </Modal.Body>
+        </Modal>
     )
 }
