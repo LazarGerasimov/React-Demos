@@ -59,9 +59,16 @@ function App() {
 
     };
 
-    const contextValue = {
-        onTodoDeleteClick
+    const onTodoClick = async (todoId) => {
+       
+        setTodos(state => state.map(x => x._id === todoId ? { ...x, isCompleted: !x.isCompleted } : x));
+
     }
+
+    const contextValue = {
+        onTodoDeleteClick,
+        onTodoClick
+    };
 
 
     return (
