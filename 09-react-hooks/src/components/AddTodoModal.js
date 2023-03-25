@@ -7,7 +7,7 @@ import { useForm } from '../hooks/useForm';
 
 export const AddTodoModal = ({
     onTodoAddSubmit,
-
+    show
 }) => {
 
     const { formValues, onChangeHandler, onSubmit } = useForm({
@@ -16,7 +16,7 @@ export const AddTodoModal = ({
 
 
     return (
-        <Modal show={true}>
+        <Modal show={show}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Todo</Modal.Title>
             </Modal.Header>

@@ -45,7 +45,7 @@ function App() {
         <>
             <Header />
             <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
-            <AddTodoModal onTodoAddSubmit={onTodoAddSubmit} />
+            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} />
         </>
     );
 }
