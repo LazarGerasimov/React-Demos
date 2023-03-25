@@ -1,20 +1,16 @@
 import ListGroup from 'react-bootstrap/ListGroup';
+import { TodoItem } from './TodoItem';
 
 
-export const TodoList = () => {
+export const TodoList = ({
+    todos,
+    
+}) => {
     return (
         <div style={{ width: '30%', margin: '10px auto' }}>
             <h1>Todo List</h1>
             <ListGroup >
-                <ListGroup.Item action>
-                    Link 1
-                </ListGroup.Item>
-                <ListGroup.Item action>
-                    Link 2
-                </ListGroup.Item>
-                <ListGroup.Item action>
-                    This one is a button
-                </ListGroup.Item>
+                {todos.map(t => <TodoItem key={t._id} {...t}/>)}
             </ListGroup>
         </div>
     )
