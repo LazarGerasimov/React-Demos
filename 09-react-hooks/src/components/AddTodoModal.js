@@ -17,8 +17,11 @@ export const AddTodoModal = ({
 
 
     return (
-        <Modal show={show}>
-            <Modal.Header closeButton onHide={onTodoAddClose}>
+        <Modal show={show} onEscapeKeyDown={onTodoAddClose}>
+            <Modal.Header
+                closeButton
+                onHide={onTodoAddClose}
+            >
                 <Modal.Title>Add Todo</Modal.Title>
             </Modal.Header>
 
