@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
+import { AddTodoModal } from './components/AddTodoModal';
 
 
 
@@ -24,7 +25,7 @@ function App() {
         <>
         <Header />
         <TodoList todos={todos} />
-        
+        <AddTodoModal />
         </>
     );
 }
