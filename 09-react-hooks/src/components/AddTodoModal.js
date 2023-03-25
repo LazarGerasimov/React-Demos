@@ -5,19 +5,16 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from '../hooks/useForm';
 
 
-export const AddTodoModal = () => {
+export const AddTodoModal = ({
+    onTodoAdd,
 
-    const { formValues, onChangeHandler } = useForm({
+}) => {
+
+    const { formValues, onChangeHandler, onSubmit } = useForm({
         text: ''
-    });
+    }, onTodoAdd);
 
-    const onTodoSubmit = (e) => {
-        e.preventDefault();
-
-
-        console.log(formValues);
-    }
-
+    
     return (
         <Modal show={true}>
             <Modal.Header closeButton>
@@ -25,7 +22,7 @@ export const AddTodoModal = () => {
             </Modal.Header>
 
             <Modal.Body>
-                <Form onSubmit={onTodoSubmit}>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Todo</Form.Label>
                         <Form.Control type="text" name='text' placeholder="Add Todo here.." value={formValues.name} onChange={onChangeHandler} />

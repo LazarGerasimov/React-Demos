@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export const TodoList = ({
     todos,
-    
+
 }) => {
     return (
         <div style={{ width: '30%', margin: '10px auto' }}>

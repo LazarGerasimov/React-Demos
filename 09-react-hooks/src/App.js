@@ -19,13 +19,17 @@ function App() {
             .then(result => {
                 setTodos(Object.values(result));
             })
-    }, [])
+    }, []);
+
+    const onTodoAdd = async (values) => {
+        console.log(values);
+    };
 
     return (
         <>
-        <Header />
-        <TodoList todos={todos} />
-        <AddTodoModal />
+            <Header />
+            <TodoList todos={todos} />
+            <AddTodoModal onTodoAdd={onTodoAdd} />
         </>
     );
 }
