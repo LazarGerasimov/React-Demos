@@ -34,6 +34,9 @@ function App() {
 
         const result = await response.json();
 
+        setShowAddTodo(false);
+        setTodos(state => [...state, result]);
+
         console.log(result);
     };
 
@@ -43,12 +46,22 @@ function App() {
 
     const onTodoAddClose = () => {
         setShowAddTodo(false);
+    };
+
+    const onTodoDeleteClick = async (todoId) => {
+        await fetch(`${baseUrl}/${todoId}`, {
+            method: 'DELETE'
+        });
+
+        setTodos(state => state.filter(x => x._id !== todoId));
+
     }
- 
+
+
     return (
         <>
             <Header />
-            <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
+            <TodoList todos={todos} onTodoAddClick={onTodoAddClick} onTodoDeleteClick={onTodoDeleteClick} />
             <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
         </>
     );
