@@ -52,7 +52,7 @@ function App() {
 
     const onTodoDeleteClick = async (todoId) => {
         await fetch(`${baseUrl}/${todoId}`, {
-            method: 'DELETE'
+            method: 'PUT'
         });
 
         setTodos(state => state.filter(x => x._id !== todoId));
@@ -60,7 +60,20 @@ function App() {
     };
 
     const onTodoClick = async (todoId) => {
-       
+
+        const todo = todos.find(x => x._id === todoId); 
+
+        await fetch(`${baseUrl}/${todoId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...todo,
+                isCompleted: !todo.isCompleted
+            })
+        })
+
         setTodos(state => state.map(x => x._id === todoId ? { ...x, isCompleted: !x.isCompleted } : x));
 
     }
