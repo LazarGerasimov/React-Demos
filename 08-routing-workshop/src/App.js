@@ -9,6 +9,7 @@ import { Register } from './components/Register/Register';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as gameService from './services/gameService';
+import * as authService from './services/authService';
 import { GameDetails } from './components/GameDetails/GameDetails';
 
 import { AuthContext } from './contexts/AuthContext';
@@ -36,10 +37,10 @@ function App() {
         navigate('/catalog');
     };
 
-    const onLoginSubmit = (data) => {
-        // e.preventDefault();
-        // console.log(Object.fromEntries(new FormData(e.target)));
-        console.log(data);
+    const onLoginSubmit = async (data) => {
+        const result = await authService.login(data);
+
+        console.log(result);
     }
 
 
