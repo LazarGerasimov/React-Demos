@@ -17,7 +17,7 @@ function App() {
 
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
-    const [auth, setAuth] = useState({});
+    // const [auth, setAuth] = useState({});
 
     useEffect(() => {
         gameService.getAll()
@@ -36,10 +36,10 @@ function App() {
         navigate('/catalog');
     };
 
-    const onLoginSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(data);
-        console.log(Object.fromEntries(new FormData(e.target)));
+    const onLoginSubmit = (data) => {
+        // e.preventDefault();
+        // console.log(Object.fromEntries(new FormData(e.target)));
+        console.log(data);
     }
 
 
