@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export function Header() {
 
-    const { isAuthenticated, email } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext);
 
     return (
         <header>
