@@ -13,6 +13,7 @@ import * as authService from './services/authService';
 import { GameDetails } from './components/GameDetails/GameDetails';
 
 import { AuthContext } from './contexts/AuthContext';
+import { Logout } from './components/Logout/Logout';
 
 function App() {
 
@@ -66,11 +67,17 @@ function App() {
         } catch (error) {
             console.log(error.message);
         }
+    };
+
+    const onLogout = async () => {
+        // await authService.logout();
+        setAuth({});
     }
 
     const context = {
         onLoginSubmit,
         onRegisterSubmit,
+        onLogout,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
@@ -88,6 +95,7 @@ function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
                         <Route path='/catalog' element={<Catalog games={games} />} />
                         <Route path='/catalog/:gameId' element={<GameDetails />} />
