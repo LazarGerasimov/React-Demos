@@ -18,7 +18,7 @@ function App() {
 
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
-    // const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         gameService.getAll()
@@ -38,15 +38,49 @@ function App() {
     };
 
     const onLoginSubmit = async (data) => {
-        const result = await authService.login(data);
+        try {
+            const result = await authService.login(data);
+            setAuth(result);
+            navigate('/catalog');
+            console.log(result);
+        } catch (error) {
+            console.log('Nope');
+        }
 
-        console.log(result);
+    };
+
+    const onRegisterSubmit = async (values) => {
+
+        const { confirmedPassword, ...registerData } = values;
+
+        if (confirmedPassword !== registerData.password) {
+            throw alert('Passwords mismatch');
+        }
+
+        try {
+            const result = await authService.register(registerData);
+
+            setAuth(result);
+
+            navigate('/catalog');
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    const context = {
+        onLoginSubmit,
+        onRegisterSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken
     }
 
 
 
     return (
-        <AuthContext.Provider value={{ onLoginSubmit }}>
+        <AuthContext.Provider value={context}>
             <div id="box">
                 <Header />
                 <main id="main-content">
