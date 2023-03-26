@@ -11,10 +11,13 @@ import { useEffect, useState } from 'react';
 import * as gameService from './services/gameService';
 import { GameDetails } from './components/GameDetails/GameDetails';
 
+import { AuthContext } from './contexts/AuthContext';
+
 function App() {
 
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         gameService.getAll()
@@ -27,31 +30,36 @@ function App() {
         console.log(data);
         const newGame = await gameService.create(data);
 
-
-         
         //TODO: add to state
         setGames(state => [...state, newGame]);
         //TODO: redirect to catalog
         navigate('/catalog');
     };
 
+    const onLoginSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(data);
+        console.log(Object.fromEntries(new FormData(e.target)));
+    }
+
 
 
     return (
-        <div id="box">
-            <Header />
-            <main id="main-content">
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
-                    <Route path='/catalog' element={<Catalog games={games} />} />
-                    <Route path='/catalog/:gameId' element={<GameDetails />}/>
-                </Routes>
-            </main>
-        </div>
-
+        <AuthContext.Provider value={{ onLoginSubmit }}>
+            <div id="box">
+                <Header />
+                <main id="main-content">
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
+                        <Route path='/catalog' element={<Catalog games={games} />} />
+                        <Route path='/catalog/:gameId' element={<GameDetails />} />
+                    </Routes>
+                </main>
+            </div>
+        </AuthContext.Provider>
     );
 }
 
