@@ -9,7 +9,20 @@ const HEAD = (
         top: '50px',
         right: '-30px'
     }}></div>
-)
+);
+
+const BODY = (
+    <div style={{
+        width: '10px',
+        height: '100px',
+        background: 'black',
+        position: 'absolute',
+        top: '120px',
+        right: 0
+    }}></div>
+);
+
+
 
 
 export function HangmanDrawing() {
