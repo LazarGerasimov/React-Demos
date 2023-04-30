@@ -3,7 +3,7 @@
 export function HangmanWord() {
 
     const word = 'test';
-    const guessedLetters = ['t'];
+    const guessedLetters = ['t', 'e'];
 
     return (
         <div style={{ display: 'flex', gap: '.25em', fontSize: '6em', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'monospace' }}>
