@@ -1,4 +1,4 @@
-
+import styles from './HangmanKeyboard.module.css';
 
 const KEYS = [
     "a",
@@ -27,12 +27,20 @@ const KEYS = [
     "x",
     "y",
     "z",
-  ]
+]
 
-export function HangmanKeyboard() { 
+export function HangmanKeyboard() {
     return (
-        <div>
-            Hangman Keyboard
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(75px, 1fr))',
+            gap: '.5rem'
+        }}>
+            {KEYS.map(key => {
+                return (
+                    <button className={styles["btn"]} key={key}>{key}</button>
+                )
+            })}
         </div>
     )
 }
