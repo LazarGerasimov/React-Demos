@@ -16,10 +16,13 @@ function App() {
 
     const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter));
 
+    const isLoser = incorrectLetters.length >= 6;
+    const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter));
+
     const addGuessedLetter = useCallback((letter: string) => {
-        if (guessedLetters.includes(letter)) return;
+        if (guessedLetters.includes(letter) || isLoser || isWinner) return;
         setGuessedLetters(currentLetters => [...currentLetters, letter]);
-    }, [guessedLetters]);
+    }, [guessedLetters, isWinner, isLoser]);
     // console.log(wordToGuess);
 
 
@@ -29,7 +32,7 @@ function App() {
             const key = e.key
 
             if (!key.match(/^[a-z]$/)) return;
-            
+
             e.preventDefault();
             addGuessedLetter(key);
         }
@@ -52,12 +55,18 @@ function App() {
                 alignItems: 'center'
             }}>
             <div style={{ fontSize: '2rem', textAlign: 'center' }}>
-                Lose Win
+                {isWinner && "Winner! - Refresh to try again"}
+                {isLoser && "Loser! - Refresh to try again"}
             </div>
             <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
             <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
             <div style={{ alignSelf: 'stretch' }}>
-                <HangmanKeyboard />
+                <HangmanKeyboard
+                    disabled={isWinner || isLoser}
+                    activeLetters={guessedLetters.filter(letter => wordToGuess.includes(letter))}
+                    inactiveLetters={incorrectLetters}
+                    addGuessedLetter={addGuessedLetter}
+                />
             </div>
         </div>
     )
