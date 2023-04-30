@@ -1,13 +1,29 @@
 import { useState } from "react"
+import words from './resources/wordList.json'
 
 
 function App() {
 
-    const [wordToGuess, setWordToGuess] = useState('Test');
+    const [wordToGuess, setWordToGuess] = useState(() => {
+        return words[Math.floor(Math.random() * words.length)]
+    });
 
+    const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+
+    console.log(wordToGuess);
 
     return (
-        <h1>Test</h1>
+        <div
+            style={{
+                maxWidth: "800px",
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2rem',
+                margin: '0 auto',
+                alignItems: 'center'
+            }}>
+
+        </div>
     )
 }
 
