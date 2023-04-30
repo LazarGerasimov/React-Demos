@@ -1,0 +1,1 @@
+Hangman game project using Vite + Typescript
