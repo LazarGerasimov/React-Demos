@@ -1,7 +1,9 @@
 import { useState } from "react"
 import words from './resources/wordList.json'
+
 import { HangmanDrawing } from "./components/HangmanDrawing/HangmanDrawing";
 import { HangmanWord } from "./components/HangmanWord/HangmanWord";
+import { HangmanKeyboard } from "./components/HangmanKeyboard/HangmanKeyboard";
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
             </div>
             <HangmanDrawing />
             <HangmanWord />
+            <HangmanKeyboard />
         </div>
     )
 }
