@@ -1,6 +1,7 @@
 import { useState } from "react"
 import words from './resources/wordList.json'
 import { HangmanDrawing } from "./components/HangmanDrawing/HangmanDrawing";
+import { HangmanWord } from "./components/HangmanWord/HangmanWord";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 Lose Win
             </div>
             <HangmanDrawing />
+            <HangmanWord />
         </div>
     )
 }
