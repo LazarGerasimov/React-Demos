@@ -48,6 +48,18 @@ const LEFT_ARM = (
     }}></div>
 );
 
+const RIGHT_LEG = (
+    <div style={{
+        width: '100px',
+        height: '10px',
+        background: 'black',
+        position: 'absolute',
+        top: '210px',
+        right: '-90px',
+        rotate: '60deg',
+        transformOrigin: 'left bottom'
+    }}></div>
+);
 
 
 
@@ -58,6 +70,7 @@ export function HangmanDrawing() {
             {BODY}
             {LEFT_ARM}
             {RIGHT_ARM}
+            {RIGHT_LEG}
             <div style={{ height: '50px', width: '10px', background: 'black', position: 'absolute', top: 0, right: 0 }}></div>
             <div style={{ height: '10px', width: '200px', background: 'black', marginLeft: '120px' }}></div>
             <div style={{ height: '400px', width: '10px', background: 'black', marginLeft: '120px' }}></div>
