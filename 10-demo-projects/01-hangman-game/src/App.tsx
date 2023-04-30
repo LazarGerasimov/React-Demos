@@ -24,8 +24,8 @@ function App() {
         if (guessedLetters.includes(letter) || isLoser || isWinner) return;
         setGuessedLetters(currentLetters => [...currentLetters, letter]);
     }, [guessedLetters, isWinner, isLoser]);
-    console.log(wordToGuess);
-
+    
+    // console.log(wordToGuess);
 
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
