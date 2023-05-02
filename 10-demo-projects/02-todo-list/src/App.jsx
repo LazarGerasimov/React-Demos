@@ -32,6 +32,11 @@ export default function App() {
       })
    };
 
+   function deleteTodo(id) {
+      setTodos(currentTodos => {
+         return currentTodos.filter(todo => todo.id !== id);
+      })
+   }
 
 
    return (
@@ -56,7 +61,7 @@ export default function App() {
                      <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
                      {todo.title}
                   </label>
-                  <button className='btn btn-danger'>Delete</button>
+                  <button className='btn btn-danger' onClick={() => deleteTodo(todo.id)}>Delete</button>
                </li>
             })}
          </ul>
