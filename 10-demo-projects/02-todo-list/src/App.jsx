@@ -37,7 +37,7 @@ export default function App() {
          <h1 className='header'>Todo List</h1>
          <ul className='list'>
             {todos.map(todo => {
-               return <li>
+               return <li key={todo.id}>
                   <label>
                      <input type="checkbox" checked={todo.completed} />
                      {todo.title}
