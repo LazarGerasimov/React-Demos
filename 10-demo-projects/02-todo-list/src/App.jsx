@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles.css'
 import { NewTodoForm } from './components/NewTodoForm';
 import { TodoList } from './components/TodoList';
@@ -6,7 +6,15 @@ import { TodoList } from './components/TodoList';
 
 export default function App() {
 
-   const [todos, setTodos] = useState([]);
+   const [todos, setTodos] = useState(() => {
+      const localValue = localStorage.getItem("ITEMS");
+      if (localValue === null) return [];
+      return JSON.parse(localValue);
+   });
+
+   useEffect(() => {
+      localStorage.setItem("ITEMS", JSON.stringify(todos));
+   }, [todos])
 
    function addTodo(title) {
       setTodos(currentTodos => {            // pass a function to get the current state
@@ -38,9 +46,9 @@ export default function App() {
 
    return (
       <>
-         <NewTodoForm addTodo={addTodo}/>
+         <NewTodoForm addTodo={addTodo} />
          <h1 className='header'>Todo List</h1>
-         <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
+         <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
       </>
    )
 }
