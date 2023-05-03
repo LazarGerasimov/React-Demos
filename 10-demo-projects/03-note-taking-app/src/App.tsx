@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Routes } from "react-router";
+import { Route, Routes } from "react-router";
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Routes>
-        <h1>Test</h1>
+        <Route path="/" element={<h1>Home</h1>}/>
       </Routes>
     </>
   )
