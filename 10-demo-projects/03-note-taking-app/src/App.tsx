@@ -1,11 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes } from "react-router";
 
 
 function App() {
 
   return (
     <>
-     <h1>Test</h1>
+      <Routes>
+        <h1>Test</h1>
+      </Routes>
     </>
   )
 }
