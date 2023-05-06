@@ -29,7 +29,7 @@ export function NoteForm({
         onSubmit({
             title: titleRef.current!.value,
             markdown: markDownRef.current!.value,
-            tags: []
+            tags: selectedTags
         })
     }
 
@@ -54,6 +54,9 @@ export function NoteForm({
                                         setSelectedTags(prev => [...prev, newTag]);
                                     }}
                                     value={selectedTags.map(tag => {
+                                        return { label: tag.label, value: tag.id }
+                                    })}
+                                    options={availableTags.map(tag => {
                                         return { label: tag.label, value: tag.id }
                                     })}
                                     onChange={tags => {
