@@ -1,10 +1,22 @@
+import { Col, Form, FormGroup, Row, Stack } from "react-bootstrap";
 
 
 
 export function NoteForm() {
     return (
         <>
-        <h1>Note Form</h1>
+            <Form>
+                <Stack gap={4}>
+                    <Row>
+                        <Col>
+                            <FormGroup controlId="title">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control required ></Form.Control>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                </Stack>
+            </Form>
         </>
     )
 }
