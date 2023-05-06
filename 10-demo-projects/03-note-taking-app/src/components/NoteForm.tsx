@@ -14,6 +14,12 @@ export function NoteForm() {
                                 <Form.Control required ></Form.Control>
                             </FormGroup>
                         </Col>
+                        <Col>
+                            <FormGroup controlId="tags">
+                                <Form.Label>Tags</Form.Label>
+                                <Form.Control required ></Form.Control>
+                            </FormGroup>
+                        </Col>
                     </Row>
                 </Stack>
             </Form>
