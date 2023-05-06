@@ -1,4 +1,5 @@
 import { Col, Form, FormGroup, Row, Stack } from "react-bootstrap";
+import CreatableReactSelect from 'react-select/creatable';
 
 
 
@@ -17,7 +18,7 @@ export function NoteForm() {
                         <Col>
                             <FormGroup controlId="tags">
                                 <Form.Label>Tags</Form.Label>
-                                <Form.Control required ></Form.Control>
+                                <CreatableReactSelect isMulti />
                             </FormGroup>
                         </Col>
                     </Row>
