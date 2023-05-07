@@ -1,13 +1,21 @@
 import { useMemo, useState } from "react";
-import { Button, Col, Form, Row, Stack } from "react-bootstrap";
+import { Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
-import { Note, Tag } from "../App";
+import { Tag } from "../App";
+import styles from './NoteList.module.css';
+
+type SimplifiedNote = {
+    tags: Tag[];
+    title: string;
+    id: string;
+}
 
 type NoteListProps = {
     availableTags: Tag[];
-    notes: Note[];
+    notes: SimplifiedNote[];
 }
+
 
 export function NoteList({ availableTags, notes }: NoteListProps) {
 
@@ -15,8 +23,8 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
     const [title, setTitle] = useState("");
     const filteredNotes = useMemo(() => {
         return notes.filter(note => {
-            return (title === '' || note.title.toLowerCase().includes(title.toLowerCase())) 
-            && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
+            return (title === '' || note.title.toLowerCase().includes(title.toLowerCase()))
+                && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
         })
     }, [title, selectedTags, notes]);
 
@@ -69,10 +77,23 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
             <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
                 {filteredNotes.map(note => (
                     <Col key={note.id}>
-                        <NoteCard />
+                        <NoteCard id={note.id} title={note.title} tags={note.tags} />
                     </Col>
                 ))}
             </Row>
         </>
     )
+}
+
+function NoteCard({ id, title, tags }: SimplifiedNote) {
+    return (
+        <>
+            <Card as={Link} to={`/${id}`} className={`h-100 text-reset text-decoration-none ${styles.card}`}>
+                <Card.Body>
+
+                </Card.Body>
+            </Card>
+        </>
+    )
+
 }
