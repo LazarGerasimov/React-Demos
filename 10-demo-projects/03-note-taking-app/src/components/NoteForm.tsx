@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
 import { Button, Col, Form, FormGroup, Row, Stack } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreatableReactSelect from 'react-select/creatable';
 import { NoteData, Tag } from "../App";
 import { v4 as uuidV4 } from "uuid";
@@ -20,8 +20,9 @@ export function NoteForm({
 
     const titleRef = useRef<HTMLInputElement>(null);
     const markDownRef = useRef<HTMLTextAreaElement>(null);
-
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+    const navigate = useNavigate();
+
 
     function onSubmitHandler(e: FormEvent) {
         e.preventDefault();
@@ -30,7 +31,9 @@ export function NoteForm({
             title: titleRef.current!.value,
             markdown: markDownRef.current!.value,
             tags: selectedTags
-        })
+        });
+
+        navigate("..");
     }
 
     return (
