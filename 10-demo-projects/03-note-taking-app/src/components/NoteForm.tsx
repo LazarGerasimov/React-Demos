@@ -48,7 +48,7 @@ export function NoteForm({
                             </FormGroup>
                         </Col>
                         <Col>
-                            <FormGroup controlId="tags">
+                            <Form.Group controlId="tags">
                                 <Form.Label>Tags</Form.Label>
                                 <CreatableReactSelect
                                     onCreateOption={label => {
@@ -69,7 +69,7 @@ export function NoteForm({
                                     }}
                                     isMulti
                                 />
-                            </FormGroup>
+                            </Form.Group>
                         </Col>
                     </Row>
                     <FormGroup controlId="markdown">
