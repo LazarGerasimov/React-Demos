@@ -84,6 +84,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
         </>
     )
 }
+//test
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
     return (
