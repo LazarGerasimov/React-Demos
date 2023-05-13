@@ -23,7 +23,7 @@ export function NoteForm({
 
     const titleRef = useRef<HTMLInputElement>(null);
     const markDownRef = useRef<HTMLTextAreaElement>(null);
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+    const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
     const navigate = useNavigate();
 
 
@@ -47,7 +47,7 @@ export function NoteForm({
                         <Col>
                             <FormGroup controlId="title">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control ref={titleRef} required />
+                                <Form.Control ref={titleRef} required defaultValue={title}/>
                             </FormGroup>
                         </Col>
                         <Col>
@@ -77,7 +77,7 @@ export function NoteForm({
                     </Row>
                     <FormGroup controlId="markdown">
                         <Form.Label>Body</Form.Label>
-                        <Form.Control ref={markDownRef} required as="textarea" rows={15} />
+                        <Form.Control defaultValue={markdown} ref={markDownRef} required as="textarea" rows={15} />
                     </FormGroup>
                     <Stack direction="horizontal" gap={2} className="justify-content-end">
                         <Button type="submit" variant="primary">Save</Button>
