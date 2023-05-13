@@ -14,16 +14,20 @@ type SimplifiedNote = {
 type NoteListProps = {
     availableTags: Tag[];
     notes: SimplifiedNote[];
+    onDeleteTag: (id: string) => void;
+    onUpdateTag: (id: string, label: string) => void;
 }
 
 type EditTagsModalProps = {
     show: boolean,
     availableTags: Tag[],
     handleClose: () => void;
+    onDeleteTag: (id: string) => void;
+    onUpdateTag: (id: string, label: string) => void;
 }
 
 
-export function NoteList({ availableTags, notes }: NoteListProps) {
+export function NoteList({ availableTags, notes, onDeleteTag, onUpdateTag }: NoteListProps) {
 
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [title, setTitle] = useState("");
@@ -90,6 +94,9 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
                 ))}
             </Row>
             <EditTagsModal
+               
+                onUpdateTag={onUpdateTag}
+                onDeleteTag={onDeleteTag}
                 show={editTagsModalIsOpen}
                 handleClose={() => setEditTagsModalIsOpen(false)}
                 availableTags={availableTags}
@@ -120,7 +127,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
 
 }
 
-function EditTagsModal({ availableTags, handleClose, show }: EditTagsModalProps) {
+function EditTagsModal({ availableTags, handleClose, show, onUpdateTag, onDeleteTag }: EditTagsModalProps) {
     return (
         <>
             <Modal show={show} onHide={handleClose}>
