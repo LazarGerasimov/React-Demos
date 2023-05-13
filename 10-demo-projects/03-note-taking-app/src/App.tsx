@@ -90,7 +90,7 @@ function App() {
                }
             />
             <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
-               <Route index element={<Note />} />
+               <Route index element={<Note onDelete={onDeleteNote} />} />
                <Route path="edit" element={<EditNote
                   onSubmit={onUpdateNote}
                   onAddTag={addTag}
